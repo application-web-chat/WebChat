@@ -14,17 +14,17 @@ app.get('/login', (req, res) => {
     res.render('login.ejs');
 });
 
-app.post('/', (req, res) => {
-    res.render('chat.ejs');
-    
-    axios.post(api + '/addUser', req.body)
-        .then(res) => {
-            console.log('ok');
-        };
-        .catch(error) => {
-            console.log(error);
-        };
-});
+//app.post('/', (req, res) => {
+//    res.render('chat.ejs');
+//    
+//    axios.post(api + '/addUser', req.body)
+//        .then(res) => {
+//            console.log('ok');
+//        };
+//        .catch(error) => {
+//            console.log(error);
+//        };
+//});
 
 
 
