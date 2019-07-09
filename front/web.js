@@ -6,7 +6,9 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var app = express();
 
 app.set('view engine', 'ejs');
-
+ app.get('/', (req, res) => {
+    res.sendfile('./views/login.ejs');
+ });
 
 
 
