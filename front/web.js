@@ -10,8 +10,8 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'))
 
-app.get('/login', (req, res) => {
-    res.render('login.ejs');
+app.get('/chat', (req, res) => {
+    res.render('chat.ejs');
 });
 
 //app.post('/', (req, res) => {
@@ -24,6 +24,19 @@ app.get('/login', (req, res) => {
 //        .catch(error) => {
 //            console.log(error);
 //        };
+//});
+
+//app.get('/chat', function (req, res) {
+//
+//    axios.get('http://localhost:8082/test')
+//        .then(function (resu) {
+//            console.log(resu)
+//            res.render('chat', { 'users': req.body });
+//        })
+//        .catch(function (error) {
+//            console.log(error);
+//        });
+//
 //});
 
 
