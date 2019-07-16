@@ -1,54 +1,70 @@
 <!DOCTYPE html>
-<html>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+<html lang="fr">
 
 <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="..." />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messagerie</title>
 </head>
 
 <body>
-<!DOCTYPE html>
-<html>
+    <header>
+        <h1>Messagerie</h1>
+        <!--ajt lien vers la page profil-->
+    </header>
+    <div class="grid">
+        <div class="users">
+            <h3>Membres</h3>
+            <div style="margin: 30px;">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#Id</th>
+                            <th scope="col">Nom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0; i < users.length; i++) { %>
+                        <tr>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity
-    0="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-
-<head>
-    <h1 style="text-align: center; margin: 20px;">Tableau utilisateurs</h1>
-    <br>
-</head>
-
-<body>
-    <div style="margin: 30px;">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#Id</th>
-                    <th scope="col">Nom</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% for(var i=0; i < users.length; i++) { %>
-                <tr>
-
-                    <td>
-                        <div><%= users[i].id %></div>
-                    </td>
-                    <td><%= users[i].name %></td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+                            <td>
+                                <div><%= users[i].id %></div>
+                            </td>
+                            <td><%= users[i].name %></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="message">
+            <h3>Derniers messages</h3>
+            <!-- ajt messages ici-->
+            <div class="alert alert-primary" role="alert">
+                slt ça va?
+            </div>
+            <div class="alert alert-secondary" role="alert">
+                bien et toi?
+            </div>
+            <div class="alert alert-primary" role="alert">
+                ouai tranquille
+            </div>
+        </div>
+        <div class="text">
+            <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+        </div>
+        <div class="send">
+            <button type="button" class="btn btn-primary">Send</button>
+        </div>
     </div>
 </body>
-
-
 
 </html>

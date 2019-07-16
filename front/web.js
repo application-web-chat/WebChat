@@ -14,6 +14,15 @@ app.get('/chat', (req, res) => {
     res.render('chat.ejs');
 });
 
+//test
+//app.get('/', (req, res) => {
+//    res.send('login.ejs');
+//})
+//
+//app.get('/editProfile', (req, res) => {
+//    res.send('editProfile.ejs');
+//})
+
 //app.post('/', (req, res) => {
 //    res.render('chat.ejs');
 //    
