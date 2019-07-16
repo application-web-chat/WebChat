@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'))
 
 app.get('/chat', (req, res) => {
-    res.render('chat.ejs');
+    res.send('chat.ejs');
 });
 
 //test
@@ -47,9 +47,6 @@ app.get('/chat', (req, res) => {
 //        });
 //
 //});
-
-
-
 
 
 
