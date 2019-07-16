@@ -23,12 +23,16 @@ mysqlConnection.connect((err) => {
 });
 
 //Afficher tous les utilisateurs
-app.get('/chat', (req, res) => {
-    mysqlConnection.query('SELECT * FROM users', (err, rows, fields) => {
-        if (!err)
-        console.log(rows);
-        else
+app.get('/users', (req, res) => {
+    console.log('demande reçu')
+    mysqlConnection.query('SELECT * FROM users', (err, result) => {
+        if (err)
         console.log(err);
+        else {
+            console.log('*****toto*****');
+            console.log(result);
+            res.send(result);
+        } 
     })
 });
 
@@ -53,13 +57,14 @@ app.delete('/editProfil/:id', (req, res) => {
 });
 
 //Ajouter un utilisateur
-app.post('/submit', (req, res) => {
+app.post('/new', (req, res) => {
     console.log("Connected!");
-    var sql = "INSERT INTO users (user_name) VALUES ?";
+    var sql = "INSERT INTO users (user_name) VALUES (?)";
     mysqlConnection.query(sql,[req.body.login], (err, result) => {
         if (err) throw err;
         console.log("1 record inserted");
+        res.send();
     });
 });
-//test
+
 app.listen(8082);
