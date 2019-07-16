@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 var app = express();
 
 app.use(bodyParser.json());
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var mysqlConnection = mysql.createConnection({
     host: 'localhost',
@@ -13,6 +14,7 @@ var mysqlConnection = mysql.createConnection({
     database: 'dbchat'
 });
 
+//Connection à la base de donnée
 mysqlConnection.connect((err) => {
     if (!err)
         console.log('BDD connecté !')
@@ -20,8 +22,8 @@ mysqlConnection.connect((err) => {
         console.log('Erreur de connection à la BDD : ' + JSON.stringify(err, undefined, 2));
 });
 
-//Get USERS
-app.get('/test', (req, res) => {
+//Afficher tous les utilisateurs
+app.get('/chat', (req, res) => {
     mysqlConnection.query('SELECT * FROM users', (err, rows, fields) => {
         if (!err)
         console.log(rows);
@@ -30,8 +32,8 @@ app.get('/test', (req, res) => {
     })
 });
 
-//Get a User
-app.get('/test/:id', (req, res) => {
+//Afficher un utilisateur
+app.get('/chat/:id', (req, res) => {
     mysqlConnection.query('SELECT * FROM users WHERE user_id = ?', [req.params.id], (err, rows, fields) => {
         if (!err)
             console.log(rows);
@@ -40,8 +42,8 @@ app.get('/test/:id', (req, res) => {
     })
 });
 
-//Delete a User
-app.delete('/test/:id', (req, res) => {
+//Supprimer un utilisateur
+app.delete('/editProfil/:id', (req, res) => {
     mysqlConnection.query('DELETE FROM users WHERE user_id = ?', [req.params.id], (err, rows, fields) => {
         if (!err)
         res.send('Delete succesfully !');
@@ -50,6 +52,14 @@ app.delete('/test/:id', (req, res) => {
     })
 });
 
-//Insert a User
+//Ajouter un utilisateur
+app.post('/submit', (req, res) => {
+    console.log("Connected!");
+    var sql = "INSERT INTO users (user_name) VALUES ?";
+    mysqlConnection.query(sql,[req.body.login], (err, result) => {
+        if (err) throw err;
+        console.log("1 record inserted");
+    });
+});
 
 app.listen(8082);

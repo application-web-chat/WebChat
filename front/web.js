@@ -10,34 +10,35 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'))
 
-app.get('/chat', (req, res) => {
-    res.render('chat.ejs');
+app.get('/login', (req, res) => {
+    res.render('login.ejs');
 });
 
-//app.post('/', (req, res) => {
-//    res.render('chat.ejs');
-//    
-//    axios.post(api + '/addUser', req.body)
-//        .then(res) => {
-//            console.log('ok');
-//        };
-//        .catch(error) => {
-//            console.log(error);
-//        };
-//});
+app.post('/submit', urlencodedParser, function (req, res) {
 
-//app.get('/chat', function (req, res) {
-//
-//    axios.get('http://localhost:8082/test')
-//        .then(function (resu) {
-//            console.log(resu)
-//            res.render('chat', { 'users': req.body });
-//        })
-//        .catch(function (error) {
-//            console.log(error);
-//        });
-//
-//});
+    axios.post('http://localhost:8082/submit', req.body)
+        .then(function (res) {
+            res.redirect('http://localhost:8080/chat');
+            console.log('OK');
+            
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+});
+
+app.get('/chat', function (req, res) {
+
+    axios.get('http://localhost:8082/chat')
+        .then(function (resu) {
+            console.log(resu)
+            res.render('chat', { 'users': resu.data });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+});
 
 
 
