@@ -33,12 +33,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for(var i=0; i < users.length; i++) { %>
+                        <% for(let i=0; i < users.length; i++) { %>
                         <tr>
                             <td>
                                 <div><%= users[i].user_id %></div>
                             </td>
-                            <td><%= users[i].us er_name %></td>
+                            <td><%= users[i].user_name %></td>
                         </tr>
                         <% } %>
                     </tbody>
@@ -47,10 +47,8 @@
         </div>
         <div class="message">
             <h3>Derniers messages</h3>
-            <!-- ajt messages ici-->
-            <div class="alert alert-primary" role="alert">
-                slt ça va?
-            </div>
+            <!-- ajt messages ici -->
+               
             <div class="alert alert-secondary" role="alert">
                 bien et toi?
             </div>
@@ -59,10 +57,14 @@
             </div>
         </div>
         <div class="text">
-            <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+            
         </div>
         <div class="send">
-            <button type="button" class="btn btn-primary">Send</button>
+            <form action="/newMsg" method="POST">
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="message"></textarea>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+            
         </div>
     </div>
 </body>

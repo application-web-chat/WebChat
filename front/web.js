@@ -11,53 +11,47 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'))
 app.use(bodyParser.json());
 
+let usrList = ""
 app.get('/login', (req, res) => {
     res.render('login.ejs');
 });
 
 app.post('/chat', urlencodedParser, (req, res) => {
-    //res.render('chat.ejs')
 
     axios.post('http://localhost:8082/new', req.body)
-        .then(function (resu) {
-            console.log(resu);
+        .then(function (resul) {
+            console.log(resul);
             console.log('Enregistrement OK');
             axios.get('http://localhost:8082/users')
                 .then(function (resu) {
-                   // console.log(resu)
-                   // console.log('data ok')
-                   // console.log('*****stringify*****')
-                   // console.log(JSON.stringify(resu.data));
-                   // console.log('*****sans stringify*****')
-                   // console.log(resu.data[0].user_name);
-                    res.render('chat', { users: resu.data });
+                    usrList = resu.data
+                    res.render('chat', { users: resu.data});
+                    console.log('users ok')
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-            axios.get('http://localhost:8082/msgs')
-                .then
-           // res.end();           
+           // axios.get('http://localhost:8082/msgs')
+           //     .then(function (res) {
+           //         console.log(res)
+           //     })
+           //     .catch(function (err) {
+           //         console.log(err);
+           //     });       
         })
-        .catch(function (error) {
-            console.log(error);
-        });
+        
 });
 
-//app.get('/chat', function (req, res) {
-//
-//    axios.get('http://localhost:8082/chat')
-//        .then(function (resu) {
-//            console.log(resu)
-//            res.render('chat', { users: resu.data });
-//        })
-//        .catch(function (error) {
-//            console.log(error);
-//        });
-//        res.end();
-//
-//});
-
-
-
+app.post('/newMsg', urlencodedParser, (request, result) => {
+console.log(request.body);
+    axios.post('http://localhost:8082/newMsg', request.body)
+        .then(function (res) {
+            console.log(res);
+            console.log('message send');
+        })
+        .catch(function (erro) {
+            console.log(erro)
+        })
+    result.render('chat', { users: usrList });
+});
 app.listen(8080);

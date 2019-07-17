@@ -36,15 +36,29 @@ app.get('/users', (req, res) => {
     })
 });
 
+//Afficher les messages
+//app.get('/msgs', (req, res) => {
+//    console.log('demande  de messages reçu')
+//    mysqlConnection.query('SELECT * FROM messages', (err, resu) => {
+//        if (err)
+//            console.log(err);
+//        else {
+//            console.log('*****kiki*****');
+//            console.log(resu);
+//            res.send(resu);
+//        }
+//    })
+//});
+
 //Afficher un utilisateur
-app.get('/chat/:id', (req, res) => {
-    mysqlConnection.query('SELECT * FROM users WHERE user_id = ?', [req.params.id], (err, rows, fields) => {
-        if (!err)
-            console.log(rows);
-        else
-            console.log(err);
-    })
-});
+//app.get('/chat/:id', (req, res) => {
+//    mysqlConnection.query('SELECT * FROM users WHERE user_id = ?', [req.params.id], (err, rows, fields) => {
+//        if (!err)
+//            console.log(rows);
+//        else
+//            console.log(err);
+//    })
+//});
 
 //Supprimer un utilisateur
 app.delete('/editProfil/:id', (req, res) => {
@@ -63,6 +77,17 @@ app.post('/new', (req, res) => {
     mysqlConnection.query(sql,[req.body.login], (err, result) => {
         if (err) throw err;
         console.log("1 record inserted");
+        res.send();
+    });
+});
+
+//Ajouter un message
+app.post('/newMsg', (req, res) => {
+    console.log("Connected!");
+    var sql = "INSERT INTO messages (message) VALUES (?)";
+    mysqlConnection.query(sql, [req.body.message], (err, result) => {
+        if (err) throw err;
+        console.log("message recorded");
         res.send();
     });
 });
