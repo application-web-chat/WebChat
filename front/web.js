@@ -11,9 +11,18 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'))
 app.use(bodyParser.json());
 
-let usrList = ""
+let usrList = "";
+
 app.get('/login', (req, res) => {
     res.render('login.ejs');
+});
+
+app.get('/', (req, res) => {
+    res.render('login.ejs');
+});
+
+app.get('/chat', (req, res) => {
+    res.render('chat.ejs');
 });
 
 app.post('/chat', urlencodedParser, (req, res) => {
