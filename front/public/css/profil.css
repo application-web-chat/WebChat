@@ -1,0 +1,32 @@
+header {
+  height: 4rem;
+  margin-bottom: 1rem;
+  color:white;
+  text-align: center;
+  background-color: rgb(19, 22, 63);
+}
+
+
+body {
+  background-image: linear-gradient(to bottom, rgb(19, 22, 63) 40%, rgb(167, 167, 190));
+}
+
+h1 {
+    text-shadow: 1px 1px 2px #aaa;
+}
+
+.card {
+    width: 40%;
+    height: 100%;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-radius: 50%;
+    background-image: linear-gradient(to bottom, rgb(139, 146, 158), rgb(243, 243, 252));
+}
+
+.card-img-top {
+    width: 20%;
+    height: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
+}
