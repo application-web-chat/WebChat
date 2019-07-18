@@ -2,14 +2,20 @@
 
 body {
   background-image: linear-gradient(to bottom, rgb(19, 22, 63) 40%, rgb(167, 167, 190));
+  height: 95vh;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 header {
-  height: 4rem;
+  height: 5vh;
   margin-bottom: 1rem;
   color:white;
-  text-align: center;
   background-color: rgb(19, 22, 63);
+  margin-left: 2rem;
+}
+
+h1 {
+  text-shadow: 2px 2px 4px #aaa;
 }
 
 /*grid*/
@@ -69,13 +75,6 @@ header {
   background-color: #8f9fe9
 }
 
-.alert {
-  width: 90%;
-  height: 2rem;
-  text-align: left;
-  margin-left: 5%;
-}
-
 textarea {
   resize: none;
 }
@@ -83,10 +82,6 @@ textarea {
 .btn {
   background-image: linear-gradient(to bottom, rgb(84, 84, 97) 40%, rgb(167, 167, 190));
   border: solid 1px black;
-}
-
-h1 {
-  text-shadow: 1px 1px 2px #aaa;
 }
 
 .ml-1 {

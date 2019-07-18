@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/css/profil.css">
+    <link rel="stylesheet" href="loginstyle.css">
     <link rel="icon" type="image/png" href="..." />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
@@ -17,23 +17,22 @@
 
 <body>
     <header>
-        <h1>Profil</h1>
+        <h1 class="mt-0">Messagerie</h1>
     </header>
 
     <div class="card">
-        <img src="../public/img/user-icon.png" class="card-img-top" alt="...">
-        <h2 class="card-title">Profil</h2>
-        <div class="col">
-            <div class="row">
-                <input type="text" class="form" placeholder="pseudo">
-            </div>
-            <div class="row">
-                <input type="text" class="form" placeholder="mot de passe">
+        <img src="user-icon.png" class="card-img-top" alt="...">
+        <form action="/chat" method="POST">
+            <div class="form-group">
+                <h2 class="card-title">Profil</h2>
+                <label for="inputLastName">Pseudo</label>
+                <input type="text" id="login" name="login" class="form-control" required>
                 <button type="submit" id="connection" class="btn btn-primary card-link"
-                    onclick="alert('bonjour!')">Modifier</button>
+                    onclick="alert('bonjour!')">Modifier le pseudo</button>
             </div>
-        </div>
+        </form>
     </div>
+
 </body>
 
 </html>
