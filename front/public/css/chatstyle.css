@@ -1,8 +1,15 @@
-
 /*main*/
 
 body {
   background-image: linear-gradient(to bottom, rgb(19, 22, 63) 40%, rgb(167, 167, 190));
+}
+
+header {
+  height: 4rem;
+  margin-bottom: 1rem;
+  color:white;
+  text-align: center;
+  background-color: rgb(19, 22, 63);
 }
 
 /*grid*/
@@ -18,14 +25,6 @@ body {
 .grid > div {
   text-align: center;
   margin: 0.8rem;
-}
-
-header {
-  height: 4rem;
-  margin-bottom: 1rem;
-  color:white;
-  text-align: center;
-  background-color: rgb(19, 22, 63);
 }
 
 .users {
@@ -47,9 +46,8 @@ header {
   grid-column-end: 9;
   grid-row-start: 1;
   grid-row-end: 7;
-  border: solid 0.5rem;
-  border-color: rgb(19, 22, 63);
-  background-image: url('../img/rowan.jpg');
+  background-image: url('rowan.jpg');
+  background-repeat: round;
 }
 
 .text {
@@ -81,4 +79,18 @@ header {
 
 textarea {
   resize: none;
+}
+
+.btn {
+  background-image: linear-gradient(to bottom, rgb(84, 84, 97) 40%, rgb(167, 167, 190));
+  border: solid 1px black;
+}
+
+h1 {
+  text-shadow: 1px 1px 2px #aaa;
+}
+
+.ml-1 {
+  width: 4rem;
+  height: 4rem;
 }
