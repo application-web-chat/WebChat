@@ -80,18 +80,20 @@ console.log(request.body);
         })
 });
 
-////Afficher les messages
-//app.get('/msgs', function (req, res){
-//    axios.get('http://localhost:8082/msgs')
-//        .then(function (resu) {
-//            msgs = resu.data
-//            console.log('msg ok')
-//            res.render('chat', { messages: msgs });
-//        })
-//        .catch(function (error) {
-//            console.log(error);
-//        });
-//});
+//Suppression message
+app.post('/deletemsg', function (req, res) {
+    let id = req.params.id;
+    axios.delete("http://localhost:8082/deletemsg/" + id)
+        .then(function (resp) {
+            res.redirect("http://localhost:8080/chat")
+            console.log(resp)
+            res.status(200).send();
+        })
+        .catch(function (err) {
+            console.log(err);
+            res.status(404).send();
+        });
+});
 
 
 app.listen(8080);
