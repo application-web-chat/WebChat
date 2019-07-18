@@ -46,7 +46,7 @@ header {
   grid-column-end: 9;
   grid-row-start: 1;
   grid-row-end: 7;
-  background-image: url('rowan.jpg');
+  background-image: url('../public/img/rowan.jpg');
   background-repeat: round;
 }
 

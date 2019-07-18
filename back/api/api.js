@@ -61,7 +61,7 @@ app.get('/users', (req, res) => {
 //});
 
 //Supprimer un utilisateur
-app.delete('/editProfil/:id', (req, res) => {
+app.delete('/delete/:id', (req, res) => {
     mysqlConnection.query('DELETE FROM users WHERE user_id = ?', [req.params.id], (err, rows, fields) => {
         if (!err)
         res.send('Delete succesfully !');

@@ -42,6 +42,20 @@ app.post('/chat', urlencodedParser, (req, res) => {
         
 });
 
+app.post('/delete', function (req, res) {
+    let id = req.params.id;
+    axios.delete("http://localhost:8082/delete/" + id)
+        .then(function (resp) {
+            res.redirect("http://localhost:8080/chat")
+            console.log(resp)
+            res.status(200).send();
+        })
+        .catch(function (err) {
+            console.log(err);
+            res.status(404).send();
+        });
+});
+
 app.post('/newMsg', urlencodedParser, (request, result) => {
 console.log(request.body);
     axios.post('http://localhost:8082/newMsg', request.body)

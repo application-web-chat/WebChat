@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="chatstyle.css">
+    <link rel="stylesheet" href="../public/css/chatstyle.css">
     <link rel="icon" type="image/png" href="..." />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
@@ -28,26 +28,50 @@
     </header>
     <div class="grid">
         <div class="users">
-            <h3>Membres</h3>
+            <!-- <h3>Membres</h3>
             <div style="margin: 30px;">
-                <th scope="col">#Id</th>
-                <th scope="col">Nom</th>
+                <th scope="col">Pseudo</th>
                 <% for(var i=0; i < users.length; i++) { %>
                 <%= users[i].name %>
                 <% } %>
-            </div>
+            </div> -->
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th style="display: none" scope="col">Id</th>
+                        <th scope="col">Pseudo</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < users.length; i++) { %>
+                    <tr>
+                        <td style="display: none"><%= users[i].user_id %></td>
+                        <td><%= users[i].user_name %></td>
+                        <td>
+                            <form method='POST' action="/delete">
+                                <button data-confirm="Are you sure?" data-method="delete"
+                                    href="http://localhost:8082/editProfil/<%= users[i].user_id %>" rel="nofollow">Delete</button>
+                            </form>
+                        </td>
+            
+            
+            
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
         </div>
         <div class="message">
             <h3>Derniers messages</h3>
             <!-- ajt messages ici-->
-        </div>
+        </div> 
 
         <div class="text">
-            <form action="/newMsg" method="POST"></form>
-            <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
-        </div>
-        <div class="send">
-            <button type="button" class="btn btn-primary">Send</button>
+            <form action="/newMsg" method="POST">
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="message"></textarea>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
         </div>
     </div>
 </body>
