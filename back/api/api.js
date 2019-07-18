@@ -82,4 +82,14 @@ app.get('/msgs', (req, res) => {
     })
 });
 
+//Supprimer messages
+app.delete('/deletemsg/:id', (req, res) => {
+    mysqlConnection.query('DELETE FROM messages WHERE message_id = ?', [req.params.id], (err, rows, fields) => {
+        if (!err)
+            res.send('Delete succesfully !');
+        else
+            console.log(err);
+    })
+});
+
 app.listen(8082);
