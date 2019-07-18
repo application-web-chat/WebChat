@@ -12,6 +12,7 @@ app.use(express.static(__dirname + '/'))
 app.use(bodyParser.json());
 
 let usrList = "";
+let msgs = "";
 
 app.get('/login', (req, res) => {
     res.render('login.ejs');
@@ -25,6 +26,7 @@ app.get('/chat', (req, res) => {
     res.render('chat.ejs');
 });
 
+//Ajout utilisateur
 app.post('/chat', urlencodedParser, (req, res) => {
 
     axios.post('http://localhost:8082/new', req.body)
@@ -39,18 +41,12 @@ app.post('/chat', urlencodedParser, (req, res) => {
                 })
                 .catch(function (error) {
                     console.log(error);
-                });
-           // axios.get('http://localhost:8082/msgs')
-           //     .then(function (res) {
-           //         console.log(res)
-           //     })
-           //     .catch(function (err) {
-           //         console.log(err);
-           //     });       
+                });     
         })
         
 });
 
+//Suppression utilisateur
 app.post('/delete', function (req, res) {
     let id = req.params.id;
     axios.delete("http://localhost:8082/delete/" + id)
@@ -65,16 +61,32 @@ app.post('/delete', function (req, res) {
         });
 });
 
+//Envoie message
 app.post('/newMsg', urlencodedParser, (request, result) => {
 console.log(request.body);
     axios.post('http://localhost:8082/newMsg', request.body)
         .then(function (res) {
             console.log(res);
             console.log('message send');
+            result.render('chat');
         })
-        .catch(function (erro) {
-            console.log(erro)
+        .catch(function(err) {
+            console.log(err);
         })
-    result.render('chat', { users: usrList });
 });
+
+//Afficher les messages
+app.get('/msgs', function (req, res){
+    axios.get('http://localhost:8082/msgs')
+        .then(function (resu) {
+            msgs = resu.data
+            console.log('msg ok')
+            res.render('chat', { messages: resu.data });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+});
+
+
 app.listen(8080);

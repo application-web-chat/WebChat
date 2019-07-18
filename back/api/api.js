@@ -11,7 +11,7 @@ var mysqlConnection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'Mysql@7',
-    database: 'dbchat'
+    database: 'chatdb'
 });
 
 //Connection à la base de donnée
@@ -35,30 +35,6 @@ app.get('/users', (req, res) => {
         } 
     })
 });
-
-//Afficher les messages
-//app.get('/msgs', (req, res) => {
-//    console.log('demande  de messages reçu')
-//    mysqlConnection.query('SELECT * FROM messages', (err, resu) => {
-//        if (err)
-//            console.log(err);
-//        else {
-//            console.log('*****kiki*****');
-//            console.log(resu);
-//            res.send(resu);
-//        }
-//    })
-//});
-
-//Afficher un utilisateur
-//app.get('/chat/:id', (req, res) => {
-//    mysqlConnection.query('SELECT * FROM users WHERE user_id = ?', [req.params.id], (err, rows, fields) => {
-//        if (!err)
-//            console.log(rows);
-//        else
-//            console.log(err);
-//    })
-//});
 
 //Supprimer un utilisateur
 app.delete('/delete/:id', (req, res) => {
@@ -90,6 +66,20 @@ app.post('/newMsg', (req, res) => {
         console.log("message recorded");
         res.send();
     });
+});
+
+//Afficher les messages
+app.get('/msgs', (req, res) => {
+    console.log('demande  de messages reçu')
+    mysqlConnection.query('SELECT * FROM messages', (err, resu) => {
+        if (err)
+            console.log(err);
+        else {
+            console.log('*****kiki*****');
+            console.log(resu);
+            res.send(resu);
+        }
+    })
 });
 
 app.listen(8082);

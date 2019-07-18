@@ -46,8 +46,7 @@ header {
   grid-column-end: 9;
   grid-row-start: 1;
   grid-row-end: 7;
-  background-image: url('../public/img/rowan.jpg');
-  background-repeat: round;
+  background-image: linear-gradient(to bottom, rgb(139, 146, 158), rgb(243, 243, 252));
 }
 
 .text {

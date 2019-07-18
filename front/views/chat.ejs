@@ -33,7 +33,7 @@
                     <tr>
                         <th style="display: none" scope="col">Id</th>
                         <th scope="col">Pseudo</th>
-                        <th scope="col">Supprimer</th>
+                        <!--<th scope="col">Supprimer</th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -41,12 +41,12 @@
                     <tr>
                         <td style="display: none"><%= users[i].user_id %></td>
                         <td><%= users[i].user_name %></td>
-                        <td>
+                        <!--<td>
                             <form method='POST' action="/delete">
                                 <button data-confirm="Are you sure?" data-method="delete"
                                     href="http://localhost:8082/editProfil/<%= users[i].user_id %>" rel="nofollow">Delete</button>
                             </form>
-                        </td>
+                        </td>-->
             
             
             
@@ -56,8 +56,7 @@
             </table>
         </div>
         <div class="message">
-            <h3>Derniers messages</h3>
-            <!-- ajt messages ici-->
+            
         </div> 
 
         <div class="text">
