@@ -56,7 +56,14 @@
             </table>
         </div>
         <div class="message">
+            <tbody>
+                <% for(var i=0; i < messages.length; i++) { %>
+                <tr>
             
+                    <td><%= messages[i].message %></td>
+                </tr>
+                <% } %>
+            </tbody>
         </div> 
 
         <div class="text">
