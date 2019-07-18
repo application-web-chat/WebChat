@@ -40,30 +40,29 @@
                     <% for(var i=0; i < users.length; i++) { %>
                     <tr>
                         <td style="display: none"><%= users[i].user_id %></td>
-                        <td><%= users[i].user_name %></td>
-                        <!--<td>
-                            <form method='POST' action="/delete">
-                                <button data-confirm="Are you sure?" data-method="delete"
-                                    href="http://localhost:8082/editProfil/<%= users[i].user_id %>" rel="nofollow">Delete</button>
-                            </form>
-                        </td>-->
-            
-            
-            
+                        <td><%= users[i].user_name %></td>           
                     </tr>
                     <% } %>
                 </tbody>
             </table>
         </div>
         <div class="message">
-            <tbody>
-                <% for(var i=0; i < messages.length; i++) { %>
-                <tr>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Messages</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < messages.length; i++) { %>
+                    <tr>
+                
+                        <td><%= messages[i].message %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
             
-                    <td><%= messages[i].message %></td>
-                </tr>
-                <% } %>
-            </tbody>
         </div> 
 
         <div class="text">
